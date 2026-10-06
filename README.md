@@ -298,8 +298,8 @@ Topper                      : Vishal
 
 ## Viva Voce Preparation (Q&A)
 
-**Q1: Why do we cast `total` to `(double)` when calculating percentage?**  
-> In Java, dividing two integers performs integer division, discarding fractional remainders (e.g., `381 / 4` would truncate to `95.0` instead of `95.25`). Explicit casting `(double) total / subjects` promotes the operation to floating-point division.
+**Q1: How is the academic percentage calculated?**
+> The percentage is `(totalObtained / totalMaximum) * 100`. Since each subject is marked out of 100, `totalMaximum` is `numberOfSubjects * 100`. When `totalMaximum` is zero or less, the calculation returns `0.0` to avoid division by zero. For example, 381 marks out of 400 is 95.25%.
 
 **Q2: What is the difference between `&&` and `&`?**  
 > `&&` is the short-circuit logical AND operator. If the first condition evaluates to `false`, the remaining expressions are skipped. `&` always evaluates every operand regardless of the left side.
