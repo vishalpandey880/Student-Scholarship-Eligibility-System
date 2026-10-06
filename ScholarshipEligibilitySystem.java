@@ -6,8 +6,8 @@ public class ScholarshipEligibilitySystem {
     private static final Scanner scanner = new Scanner(System.in);
 
     // Data storage for multiple students using simple arrays
-    private static int totalStudents = 0;
-    private static String[] names;
+    private static int totalStudents = 0;           //An array used to store the names of multiple students
+    private static String[] names;       
     private static int[] rollNumbers;
     private static double[] attendances;
     private static double[] incomes;
@@ -90,12 +90,12 @@ public class ScholarshipEligibilitySystem {
     // =========================================================================
     // PART 1: STUDENT REGISTRATION (Module 1 & Module 9)
     // =========================================================================
-    public static void registerStudents() {
+    public static void registerStudents() {                        //Creates a method
         System.out.print("Enter number of students: ");
         totalStudents = readPositiveInt();
 
         // Initialize parallel arrays based on total student count
-        names = new String[totalStudents];
+        names = new String[totalStudents];              
         rollNumbers = new int[totalStudents];
         attendances = new double[totalStudents];
         incomes = new double[totalStudents];
@@ -111,7 +111,7 @@ public class ScholarshipEligibilitySystem {
         for (int i = 0; i < totalStudents; i++) {
             System.out.println("\n---------- Student " + (i + 1) + " ----------");
             System.out.print("Enter Student Name    : ");
-            names[i] = scanner.nextLine().trim();
+            names[i] = scanner.nextLine().trim();                  //removes extra spaces using trim().
 
             System.out.print("Enter Roll Number     : ");
             rollNumbers[i] = readPositiveInt();
@@ -410,6 +410,7 @@ public class ScholarshipEligibilitySystem {
      *
      * @param index Student array index
      */
+    
     public static void recalculateStudent(int index) {
         if (calculated && subjectMarks[index] != null) {
             totalMarks[index] = calculateTotalMarks(subjectMarks[index]);
