@@ -176,8 +176,11 @@ public class ScholarshipEligibilitySystem {
         return total;
     }
 
-    public static double calculatePercentage(int total, int numberOfSubjects) {
-        return (double) total / numberOfSubjects;
+    public static double calculatePercentage(int totalObtained, int totalMaximum) {
+        if (totalMaximum <= 0) {
+            return 0.0;
+        }
+        return ((double) totalObtained / totalMaximum) * 100.0;
     }
 
     public static char calculateGrade(double percentage) {
@@ -202,7 +205,7 @@ public class ScholarshipEligibilitySystem {
 
         for (int i = 0; i < totalStudents; i++) {
             totalMarks[i] = calculateTotalMarks(subjectMarks[i]);
-            percentages[i] = calculatePercentage(totalMarks[i], subjectMarks[i].length);
+            percentages[i] = calculatePercentage(totalMarks[i], subjectMarks[i].length * 100);
             grades[i] = calculateGrade(percentages[i]);
         }
 
@@ -410,7 +413,7 @@ public class ScholarshipEligibilitySystem {
     public static void recalculateStudent(int index) {
         if (calculated && subjectMarks[index] != null) {
             totalMarks[index] = calculateTotalMarks(subjectMarks[index]);
-            percentages[index] = calculatePercentage(totalMarks[index], subjectMarks[index].length);
+            percentages[index] = calculatePercentage(totalMarks[index], subjectMarks[index].length * 100);
             grades[index] = calculateGrade(percentages[index]);
         }
         if (evaluated && calculated && subjectMarks[index] != null) {
