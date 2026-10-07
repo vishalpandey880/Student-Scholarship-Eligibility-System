@@ -111,7 +111,7 @@ public class ScholarshipEligibilitySystem {
         for (int i = 0; i < totalStudents; i++) {
             System.out.println("\n---------- Student " + (i + 1) + " ----------");
             System.out.print("Enter Student Name    : ");
-            names[i] = scanner.nextLine().trim();                  //removes extra spaces using trim().
+            names[i] = normalizeName(scanner.nextLine());
 
             System.out.print("Enter Roll Number     : ");
             rollNumbers[i] = readPositiveInt();
@@ -128,6 +128,10 @@ public class ScholarshipEligibilitySystem {
         calculated = false;
         evaluated = false;
         System.out.println("\n[SUCCESS] " + totalStudents + " student(s) registered successfully!");
+    }
+
+    private static String normalizeName(String name) {
+        return name.trim().replaceAll("\\s+", " ");
     }
 
     // =========================================================================
@@ -457,7 +461,7 @@ public class ScholarshipEligibilitySystem {
         switch (updateChoice) {
             case 1:
                 System.out.print("Enter new Name (Current: " + names[index] + "): ");
-                names[index] = scanner.nextLine().trim();
+                names[index] = normalizeName(scanner.nextLine());
                 System.out.println("[SUCCESS] Name updated successfully!");
                 break;
 
@@ -490,7 +494,7 @@ public class ScholarshipEligibilitySystem {
 
             case 5:
                 System.out.print("Enter new Name: ");
-                names[index] = scanner.nextLine().trim();
+                names[index] = normalizeName(scanner.nextLine());
                 System.out.print("Enter new Attendance % (0-100): ");
                 attendances[index] = readDouble(0, 100);
                 System.out.print("Enter new Annual Income: ");
